@@ -1,0 +1,254 @@
+.fixed{
+    position: fixed;
+    top: -29px;
+    z-index: 99999;
+}
+.goto{
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    background-color: #F4F4F4;
+    top: 600px;
+    right:73px;
+    color: white;
+    text-align: center;
+    line-height: 15px;
+    padding-top: 10px;
+    border: 1px solid #F4F4F7;
+    z-index: 9998;
+    display: none;
+}
+body .mark{
+    display: none;
+  width: 1519px;
+  height: 900px;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+.login{
+    display: block;
+    width: 370px;
+    height: 300px;
+    background-color: white;
+    top: 200px;
+    left: 50%;
+    margin-left: -185px;
+    position: fixed;
+    z-index: 99999;
+    padding: 10px 10px;
+}
+.login h1{
+    
+}
+.close1{
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 19px;
+    height: 19px;
+    background: url(../images/close.png) no-repeat;
+    cursor: pointer;
+}
+.close1:hover{
+    background-position: bottom;
+}
+.main{
+    overflow: hidden;
+    color: #666666;
+    background-color: #F4F4F4;
+    font-size: 14px;
+    color: #333;
+}
+.main .w{
+    width: 1190px;
+}
+.tanchu{
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 192px;
+    width: 997px;
+    height: 470px;
+    background-color: rgba(156,155,155,0.5);
+
+}
+
+.main .M1{
+    float: left;
+    height: 450px;
+    width: 190px;
+    line-height: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*background-color: red;*/
+    background-color: #fefefe;
+    /*padding: 10px 0;*/
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.main .M1 li{
+    padding-left: 18px;
+}
+.main .M1 li:hover{
+    background-color: #D9D9D9;
+}
+
+.main .M2{
+    float: left;
+    margin-top: 10px;
+
+   overflow: hidden;
+    background-color:#fefefe;
+    /*padding: 10px 0;*/
+    margin-right: 10px;
+     height: 470px;
+    width: 590px;
+    position: relative;
+}
+.M2 ul{
+    width: 4130px;
+    height: 470px;
+    position: absolute;
+    left:0;
+    top: 0;
+}
+
+.M2 li{
+    width: 590px;
+    height: 470px;
+    float: left;
+    /*<炫酷的过度动画*/
+    /* animation: img 0.3s;
+    -moz-animation: img  0.3s; Firefox
+    -webkit-animation: img  0.3s; Safari and Chrome
+    -o-animation: img  0.3s; Opera
+    
+    }
+    @keyframes img{
+    0%{ opacity: 0; transform: translate(600px, 0) }
+    100%{opacity: 1; transform: translate(0, 0) } */
+}
+.M2 li img{
+    width: 590px;
+    height: 470px;
+}
+/*.M2 .zuoyou span{
+    width: 30px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -15px;
+    background-color: rgba(200,200,200,0.5);
+    z-index: 9999;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-family: "宋体";
+    cursor: pointer;
+    font-size: 20px;
+}*/
+/*.M2 .zuoyou span:hover{
+    background-color: rgba(200,200,200,0.9);
+    
+}*/
+.M2 .zuoyou .M2right{
+    left: 560px;
+}
+.M2 .circle{
+    position: absolute;
+    margin-left: -40px;
+    left: 50%;
+    bottom: 15px; 
+    z-index: 9999;  
+    
+}
+
+.M2 .circle span{
+    height: 20px;
+    width: 20px;
+    float: left;
+    text-align: center;
+    background-color: rgba(255,255,255,.5);
+    line-height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+
+}
+.M2 .circle .nowspan{
+    background-color: rgba(255,255,255,.9);
+
+}
+.main .M345{
+    float: left;
+    margin-top: 10px;
+
+    height: 470px;
+    width: 190px;
+    margin-right: 10px;
+}
+.main .M3,.main .M4,.main .M5{
+    float: left;
+    height: 150px;
+    width: 190px;
+    background-color: #fefefe;
+    /*padding: 10px 0;*/
+    /*margin-right: 10px;*/
+    margin-bottom: 10px;
+}
+.main .M4{}
+.main .M5{margin-bottom: 0px;}
+.main .M6{
+    margin-top: 10px;
+
+    float: left;
+    height: 470px;
+    width: 190px;
+    background-color:#fefefe;
+    /*padding: 10px 0;*/
+}
+.main .M7{
+    float: left;
+    width:1190px;
+    height: 200px;
+    margin-top: 10px;
+    background-color: #fefefe;
+    overflow: hidden;
+    position: relative;
+
+}
+.M7 ul li{
+    float: left;
+    width: 190px;
+    height: 190px;
+    margin-left: -1px;
+
+}
+.M7 ul li:hover{
+    background-color: #D9D9D9;
+
+}
+.M7 ul li img{
+    width: 190px;
+    height: 190px;
+}
+/*.M7 .dianji{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+}*/
+.M7 ul{
+    width: 12000px;
+    height: 190px;
+    position: absolute;
+    top: 0;
+}
+

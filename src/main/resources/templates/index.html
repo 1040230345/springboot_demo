@@ -1,22 +1,744 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>我的狗东</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+    
+        window.onload=function(){
+            function scroll(){
+            return {
+                left:window.pageXOffset,
+                top:window.pageYOffset
+        }
+    }
+    //document.documentElement.srollTop HTML页面卷动的高度；同时也等于window.pageYOffset
+        var header=document.getElementById("header");
+        var headertop=header.offsetTop;
+        var go=document.getElementById("goto");
+        var leader=0;var target=0;var time;
 
-<head>
-    <title>第一个springboot页面</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js" type="application/javascript"></script>
-</head>
+        window.onscroll=function(){
+            console.log(document.documentElement.scrollTop+"&&"+scroll().top);
+            go.style.display="block";
+          clearInterval(time);
+            time=setInterval(function(){
+                 target=scroll().top;
+                 leader=leader+(target-leader)/10;
+                go.style.top=leader+600+"px"
+            }, 30)
+           
+                if(scroll().top>=headertop){
+                    header.className="header fixed";
+                    $(".main").css('marginTop', '223px');
+                }else if(scroll().top<headertop){
+                   header.className="header";
+                   $(".main").css('marginTop', '0');
+                }
+            }
+        }
+    </script></head>
 <body>
-<div th:insert="~{header :: nav}"></div>
-<div class="container-fluid" style="background-color: #2aabd2">
-    <div class="row" style="margin: 30px">
-        <div class="col-md-9 col-xs-9 col-sm-9 col-md-9 col-lg-9" style="background-color: red; height: 300px"></div>
-        <div class="col-md-3 col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color: green; height: 300px"></div>
+    <!-- 遮罩 -->
+    <div class="mark" id="mark">
+        <div class="login">
+            <h1>登录</h1>
+            <button class="close1" id="close1"></button>
+        </div>
     </div>
+    <!--京东头部导航开始-->
+    <div class="shortcut tp">
+        <div class="goto" id="goto">
+            <a href="#">
+                回到
+                <br>顶部</a>
+        </div>
+        <div class="w">
+            <div class="fl">
+                <div class="dt">
+                    <img src="images/area.png" alt=""/>
+                    送至：广东 <i><s>♢</s></i> 
+                </div>
+
+            </div>
+            <div class="fr">
+                <ul>
+                    <li>
+                        <a href="#" id="login">你好，请登录</a>
+                        <script type="text/javascript">
+                                var login=document.getElementById("login");
+                                var mark=document.getElementById("mark");
+                                login.onclick=function(){
+                                    mark.style.display="block";
+                                }
+                                var close1=document.getElementById("close1");
+                                close1.onclick=function(){
+                                    mark.style.display="none";
+                                }
+                        </script>
+                        &nbsp;&nbsp;
+                        <a href="#" class="col-red">免费注册</a>
+                    </li>
+                    <li class="line"></li>
+                    <li>
+                        <a href="#">我的订单</a>
+                    </li>
+                    <li class="line"></li>
+                    <li class="fore">
+                        <a href="#">我的京东</a> <i><s>♢</s></i> 
+                    </li>
+                    <!--<div class="dd">你哈</div>
+                -->
+                <li class="line"></li>
+                <li>
+                    <a href="#">京东会员</a>
+                </li>
+                <li class="line"></li>
+                <li class="fore">
+                    <a href="#" class="col-red">企业采购</a>
+                    <i>
+                        <s>♢</s>
+                    </i>
+                </li>
+                <li class="line"></li>
+                <li class="fore">
+                    客户服务
+                    <i>
+                        <s>♢</s>
+                    </i>
+                </li>
+                <li class="line"></li>
+                <li class="fore">
+                    网站导航
+                    <i>
+                        <s>♢</s>
+                    </i>
+                </li>
+                <li class="line"></li>
+                <li class="tel-jd" id="teljd">
+                    <div class="telopen" id="telopen">
+                        <img src="images/ma.png" alt="" class="ma"></div>
+                    <i class="tel">手机京东</i>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+
+        
+        // var teljd= document.getElementById("teljd");
+        // var telopen=document.getElementById("telopen");
+        // teljd.onmouseover=function(){
+        //     telopen.style.display = "block";
+        // }
+        // teljd.onmouseout=function(){
+        //     telopen.style.display = "none";
+        
+        // }
+        $("#teljd").hover(function() {
+            $("#telopen").stop().slideDown();
+        }, function() {
+            $("#telopen").stop().slideUp();
+        });
+         
+</script>
+</div>
+<div class="clearfix"></div>
+<!--广告-->
+<div class="topbanner " id="topbanner">
+    <div class="w tp">
+        <img src="images/topbanner.jpg" alt=""/>
+        <a href="javascript:close();" class="close-banner" id="close"></a>
+    </div>
+    <script>
+        function close(){
+
+        // var topbanner = document.getElementById("topbanner");
+        
+        // topbanner.style.display = "none";
+        $("#topbanner").fadeOut();
+        
+        }
+</script>
+</div>
+
+<!--头部-->
+<div class="header" id="header">
+    <div class="w tp">
+        <div class="logo">
+            <a href="http://www.jd.com"target="_blank" class="jd-a" title="叮咚">京东</a>
+            <div class="db11">
+                <a href="#">
+                    <img src="images/dong.gif" alt=""/>
+                </a>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" name="" id="sousuo" value="双十一AJ大甩卖！"/>
+            <button>搜索</button>
+        </div>
+        <script type="text/javascript">
+    var sousuo=document.getElementById("sousuo");
+
+        if (true) {
+            sousuo.onfocus=function(){
+            sousuo.value=null;
+        };
+        sousuo.onmouseover=function(){
+            this.select();
+        }
+
+    }
+</script>
+        <div class="car">
+            <img src="images/car.png" alt=""/>
+            <i class="col-red">购物车</i>
+            <span class="total">12</span>
+        </div>
+        <div class="hotwords">
+            <ul>
+                <li>
+                    <a href="#" class="col-red">家电嗨购日</a>
+                </li>
+                <li>
+                    <a href="#">松茸尝鲜</a>
+                </li>
+                <li>
+                    <a href="#">游戏咖</a>
+                </li>
+                <li>
+                    <a href="#">运动秀</a>
+                </li>
+                <li>
+                    <a href="#">游戏手机</a>
+                </li>
+                <li>
+                    <a href="#">清凉家装</a>
+                </li>
+                <li>
+                    <a href="#">驱蚊</a>
+                </li>
+                <li>
+                    <a href="#">缤纷水饮</a>
+                </li>
+                <li>
+                    <a href="#">手机</a>
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="navitems">
+            <div class="spacer"></div>
+            <div class="navitem-1">
+                <a href="#" class="col-red">秒杀</a>
+                <a href="#" class="col-red">优惠卷</a>
+                <a href="#">PLUS会员</a>
+                <a href="#">品牌闪购</a>
+            </div>
+            <div class="spacer"></div>
+            <div class="navitem-2">
+                <a href="#">拍卖</a>
+                <a href="#">京东时尚</a>
+                <a href="#">京东超市</a>
+                <a href="#">京东生鲜</a>
+            </div>
+            <div class="spacer"></div>
+            <div class="navitem-3">
+                <a href="#">海囤全球</a>
+                <a href="#">京东金融</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部开始-->
+<div class="main clearfix">
+    <div class="w tp">
+        <div class="M1">
+            <ul>
+                <li id="M1li1">
+                    <a href="#">家用电器</a>
+                </li>
+                <li id="M1li2">
+                    <a href="#">手机</a>
+                    /
+                    <a href="#">运营商</a>
+                    /
+                    <a href="#">数码</a>
+                </li>
+                <li id="M1li3">
+                    <a href="#">电脑</a>
+                    /
+                    <a href="#">办公</a>
+                </li>
+                <li id="M1li4">
+                    <a href="#">家居</a>
+                    /
+                    <a href="#">家具</a>
+                    /
+                    <a href="#">家装</a>
+                    /
+                    <a href="#">厨具</a>
+                </li>
+                <li id="M1li5">
+
+                    <a href="#">男装</a>
+                    /
+                    <a href="#">女装</a>
+                    /
+                    <a href="#">童装</a>
+                    /
+                    <a href="#">内衣</a>
+                </li>
+                <li id="M1li6">
+
+                    <a href="#">美妆</a>
+                    /
+                    <a href="#">个护清洁</a>
+                    /
+                    <a href="#">宠物</a>
+                </li>
+                <li id="M1li7">
+                    <a href="#">女鞋</a>
+                    /
+                    <a href="#">箱包</a>
+                    /
+                    <a href="#">钟表</a>
+                    /
+                    <a href="#">珠宝</a>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="M2" id="M2">
+            <div class="circle"></div>
+            <!--  <div class="zuoyou" >
+            <span class="M2left" id="M2left">
+                <</span>
+                    <span class="M2right" id="M2right">></span>
+                </div>
+                -->
+                <ul id="M2ul">
+                    <li>
+                        <img src="images/1.png" alt=""></li>
+                    <li>
+                        <img src="images/2.png" alt=""></li>
+                    <li>
+                        <img src="images/3.png" alt=""></li>
+                    <li>
+                        <img src="images/4.png" alt=""></li>
+                    <li>
+                        <img src="images/5.png" alt=""></li>
+                    <li>
+                        <img src="images/6.png" alt=""></li>
+                    <li>
+                        <img src="images/7.png" alt=""></li>
+                </ul>
+            </div>
+            <script type="text/javascript">
+
+
+        var li=document.getElementById("M2").getElementsByTagName("li");
+        var circle=document.getElementById("M2").children[0];
+        var M2ul=document.getElementById("M2ul");
+        var target=0;
+        var m=0;
+        var M2clock;
+
+        for(var i=0;i<li.length;i++){
+            var span=document.createElement("span");
+            span.innerHTML=i+1;
+            circle.appendChild(span);
+            circle.style.marginLeft=(-i*30)/2-10+"px";
+        }
+        var span=circle.getElementsByTagName("span");
+        var M2clock3;
+        for(var i=0;i<span.length;i++){
+            span[i].index=i;
+            span[i].onmouseover=function(){
+                //清除target值自动增长
+                clearInterval(M2clock2);
+                clearInterval(M2clock3);
+                for(var j=0;j<span.length;j++){
+                    span[j].className="";
+                }
+                this.className="nowspan";
+                target=this.index*590;
+            }
+            span[i].onmouseout=function(){
+                M2clock3=setInterval(function(){
+                        if(target<(span.length-1)*590){
+                        target=target+590;
+                    }else{
+                        target=0;
+                    }
+
+                    },3000)
+            }
+        }  
+         
+        // 自动切换  （但是target没有值）
+        var lii=0;   
+        M2clock=setInterval(function (){
+            lii=(target)/590;
+            for(var j=0;j<span.length;j++){
+                    span[j].className="";
+                }
+            span[lii].className="nowspan";
+            //非匀速
+            m=m+(target-m)/10;
+            M2ul.style.left=-m+"px";
+        },30);
+        // 自动切换  （给target传值） 
+        
+        M2clock2=setInterval(function(){
+
+            if(target<(span.length-1)*590){
+            target=target+590;
+        }else{
+            target=0;
+        }
+
+        },3000)
+/*// 左右点击
+
+        var M2left=document.getElementById("M2left");
+        var M2right=document.getElementById("M2right");
+        M2left.onclick=function(){
+            if(target!=0){
+            target=target-590;}
+        }
+        M2right.onclick=function(){
+            if(target!=span.length*590){
+            target=target+590;}
+
+        }*/
+
+    </script>
+            <div class="M345">
+                <div class="M3">3</div>
+                <div class="M4">4</div>
+                <div class="M5">5</div>
+            </div>
+            <div class="M6">6</div>
+            <div class="M7">
+                <!-- <div class="dianji"></div>
+            -->
+            <ul id="M7ul">
+                <li>
+                    <a href="#">
+                        <img src="images/t9.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t1.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t2.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t3.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t4.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t5.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t6.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t7.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t8.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t10.png" alt=""></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t11.png" alt=""></a>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+        var ul=document.getElementById("M7ul");
+        var li=ul.getElementsByTagName("li");
+        var M7=setTimeout(M7gun,0);
+        var pdl=0;
+        var M7_3;
+        function M7gun(){
+            pdl--;
+           for(var i=0;i<li.length;i++){
+           li[i].onmouseover=function(){
+            clearTimeout(M7_1);
+            clearTimeout(M7_2);
+            clearTimeout(M7_3);
+           }
+           li[i].onmouseout=function(){
+            M7_3=setTimeout(M7gun,0);
+           }}
+            if (pdl>=-1100) {
+                 ul.style.left=pdl+"px";
+                 var M7_1=setTimeout(M7gun,20);
+             }else{
+                pdl=0;
+                var M7_2=setTimeout(M7gun,20);
+             };
+
+        }
+
+    </script>
+        <div class="tanchu " id="tanchu1">1</div>
+        <div class="tanchu tanchu2" id="tanchu2">2</div>
+        <div class="tanchu tanchu3" id="tanchu3">3</div>
+        <div class="tanchu " id="tanchu4">4</div>
+        <div class="tanchu " id="tanchu5">5</div>
+        <div class="tanchu " id="tanchu6">6</div>
+        <div class="tanchu " id="tanchu7">7</div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function zhao(li,tanchu){
+
+            var lii=document.getElementById(li);
+            // var lii=document.getElementById("li");
+            var tanchuu=document.getElementById(tanchu);
+
+            lii.onmouseover=function(){
+            tanchuu.style.display="block";
+            }
+            lii.onmouseout=function(){
+            tanchuu.style.display="none";
+            }
+    }
+        for(var i=1;i<=18;i++){
+            var sli="M1li"+i;
+            var stanchu="tanchu"+i
+            zhao(sli,stanchu);
+            console.log(sli);
+            console.log(stanchu);
+    }
+</script>
+
+<div class="footer clearfix">
+    <div class="service">
+        <div class="flag tp">
+            <span class="item i1">
+                <img src="images/slogen1.png" alt=""/>
+            </span>
+            <span class="item i2">
+                <img src="images/slogen2.png" alt=""/>
+            </span>
+            <span class="item i3">
+                <img src="images/slogen3.png" alt=""/>
+            </span>
+            <span class="item i4">
+                <img src="images/slogen4.png" alt=""/>
+            </span>
+
+        </div>
+        <div class="w">
+            <div class="fl">
+                <div class="nav">
+                    <h3>购物指南</h3>
+                    <ul>
+                        <li>购物流程</li>
+                        <li>会员介绍</li>
+                        <li>生活旅行</li>
+                        <li>常见问题</li>
+                        <li>大家电</li>
+                        <li>联系客服</li>
+                    </ul>
+                </div>
+                <div class="nav">
+                    <h3>配送方式</h3>
+                    <ul>
+                        <li>上门自提</li>
+                        <li>211限时达</li>
+                        <li>配送服务查询</li>
+                        <li>配送费收取标准</li>
+                        <li>海外配送</li>
+                    </ul>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <h3>支付方式</h3>
+
+                        <li>货到付款</li>
+                        <li>在线支付</li>
+                        <li>分期付款</li>
+                        <li>邮局汇款</li>
+                        <li>公司转账</li>
+                    </ul>
+                </div>
+                <div class="nav">
+                    <h3>售后服务</h3>
+                    <ul>
+                        <li>售后政策</li>
+                        <li>价格保护</li>
+                        <li>退款说明</li>
+                        <li>返修/退换货</li>
+                        <li>取消订单</li>
+                    </ul>
+                </div>
+                <div class="nav">
+                    <h3>特色服务</h3>
+                    <ul>
+                        <li>夺宝岛</li>
+                        <li>DIY装机</li>
+                        <li>延保服务</li>
+                        <li>京东E卡</li>
+                        <li>京东通信</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fr">
+                <h3>京东自营覆盖区县</h3>
+                <p>京东已向全国2661个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。</p>
+                <p class="more">
+                    <a href="#">
+                        查看详情
+                        <img src="images/watchmore.png" alt="" style="position: relative;top: -1px;right: 1px;"/>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="w">
+        <div class="first">
+            <a href="#">关于我们</a>
+            <span class="split">|</span>
+            <a href="#">联系我们</a>
+            <span class="split">|</span>
+            <a href="#">联系客服</a>
+            <span class="split">|</span>
+            <a href="#">合作招商</a>
+            <span class="split">|</span>
+            <a href="#">商家帮助</a>
+            <span class="split">|</span>
+            <a href="#">营销中心</a>
+            <span class="split">|</span>
+            <a href="#">手机京东</a>
+            <span class="split">|</span>
+            <a href="#">友情链接</a>
+            <span class="split">|</span>
+            <a href="#">销售联盟</a>
+            <span class="split">|</span>
+            <a href="#">京东社区</a>
+            <span class="split">|</span>
+            <a href="#">风险监测</a>
+            <span class="split">|</span>
+            <a href="#">隐私政策</a>
+            <span class="split">|</span>
+            <a href="#">京东公益</a>
+            <span class="split">|</span>
+            <a href="#">English Site</a>
+            <span class="split">|</span>
+            <a href="#">Media & IR</a>
+            <span class="split">|</span>
+        </div>
+        <div class="second">
+            <a href="#">京公网安备</a>
+            <span class="split">|</span>
+
+            <a href="">11000002000088号京ICP证070359号</a>
+            <span class="split">|</span>
+
+            <a href="">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>
+            <span class="split">|</span>
+
+            <a href="">新出发京零&nbsp字第大120007号</a>
+            <br>
+            <a href="#">互联网出版许可证编号新出网证(京)字150号</a>
+            <span class="split">|</span>
+
+            <a href="">出版物经营许可证</a>
+            <span class="split">|</span>
+
+            <a href="">网络文化经营许可证京网文[2014]2148-348号</a>
+            <span class="split">|</span>
+
+            <a href="">违法和不良信息举报电话：4006561155</a>
+            <br>
+            <a href="#">Copyright © 2004 - 2019  京东JD.com 版权所有</a>
+            <span class="split">|</span>
+
+            <a href="">消费者维权热线：4006067733经营证照</a>
+            <span class="split">|</span>
+
+            <a href="">(京)网械平台备字(2018)第00003号</a>
+            <span class="split">|</span>
+
+            <a href="">营业执照</a>
+            <br>
+            <a href="#">Global Site</a>
+            <span class="split">|</span>
+
+            <a href="">Сайт России</a>
+            <span class="split">|</span>
+
+            <a href="">Situs Indonesia</a>
+            <span class="split">|</span>
+
+            <a href="">Sitio de España</a>
+            <span class="split">|</span>
+            <a href="#">เว็บไซต์ประเทศไทย</a>
+            <br>
+            <a href="#">京东旗下网站：京东钱包</a>
+            <span class="split">|</span>
+            <a href="#">京东云</a>
+
+        </div>
+        <div class="third">
+            <!--<a href="#" class="img i1">1</a>
+        -->
+        <!--<a href="#" class="img i2">2</a>
+    -->
+    <!--<a href="#" class="img i3">3</a>
+-->
+<!--<a href="#" class="img i4">4</a>
+-->
+<!--<a href="#" class="img i5">5</a>
+-->
+<a href="#" class="tupian t1"></a>
+<a href="#" class="tupian t2"></a>
+<a href="#" class="tupian t3"></a>
+<a href="#" class="tupian t4"></a>
+<a href="#" class="tupian t5"></a>
+</div>
+</div>
+
 </div>
 </body>
 </html>
